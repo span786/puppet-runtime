@@ -66,11 +66,11 @@ elsif platform.is_macos?
   if platform.is_cross_compiled?
     # Pin to an older version of ruby@2.7 hosted by Puppet as Homebrew
     # moved its Ruby 2.7 formula from OpenSSL 1.1 to 3.0
-    if ruby_version_y == "2.7"
-      pkg.build_requires "puppetlabs/puppet/ruby@2.7"
-    else
+    # if ruby_version_y == "2.7"
+    #   pkg.build_requires "puppetlabs/puppet/ruby@2.7"
+    # else
       pkg.build_requires "ruby@#{ruby_version_y}"
-    end
+    # end
     pkg.environment 'CC', 'clang -target arm64-apple-macos11' if platform.name =~ /osx-11/
     pkg.environment 'CC', 'clang -target arm64-apple-macos12' if platform.name =~ /osx-12/
   elsif platform.architecture == 'arm64' && platform.os_version.to_i >= 13
